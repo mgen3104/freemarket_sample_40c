@@ -10,4 +10,4 @@ require './db/seeds/second_category.rb'
 require './db/seeds/third_category.rb'
 require './db/seeds/brand.rb'
 require './db/seeds/size.rb'
-load(Rails.root.join('db', 'seeds', "#{Rails.env.downcase}.rb"))
+# load(Rails.root.join('db', 'seeds', "#{Rails.env.downcase}.rb"))

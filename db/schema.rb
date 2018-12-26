@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20181219053523) do
     t.bigint "first_category_id", null: false
     t.bigint "second_category_id"
     t.bigint "third_category_id"
-    t.bigint "brand_id", null: false
+    t.bigint "brand_id"
     t.integer "seller_id"
     t.integer "buyer_id"
     t.datetime "created_at", null: false
@@ -100,9 +100,6 @@ ActiveRecord::Schema.define(version: 20181219053523) do
     t.string "nickname", null: false
     t.text "image"
     t.text "profile"
-    t.string "name"
-    t.string "provider"
-    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

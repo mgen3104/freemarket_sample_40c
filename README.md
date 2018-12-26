@@ -30,13 +30,13 @@
 |------|----|-------|
 |name|string|null: false,index: true|
 |price|integer|null: false|
-|description|text|
+|description|text|null: false|
 |condition|string|null: false|
 |first_category_id|reference|null: false, foreign_key: true|
 |second_category_id|reference|null: false, foreign_key: true|
 |third_category_id|reference|null: false, foreign_key: true|
-|brand_id|reference|null: false, foreign_key: true|
-|size_id|reference|foreign_key: true|
+|brand_id|reference|foreign_key: true|
+|size_id|reference|null: false, foreign_key: true|
 |seller_id|integer|foreign_key: true|
 |buyer_id|integer|foreign_key: true|
 
