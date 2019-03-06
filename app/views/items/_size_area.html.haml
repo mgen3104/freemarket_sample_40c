@@ -1,0 +1,3 @@
+= form_with model: @item, :html => {:class => "sell-form"} do |f|
+  = f.select :size_id, options_from_collection_for_select(@sizes, :id, :name), {prompt: '---'}
+  %i.fas.fa-angle-down
