@@ -18,27 +18,30 @@ $(document).on('turbolinks:load', function() {
   // 大categoryが選ばれた時のみ小category表示
   // カテゴリ
   $(function(){
-    $('#item_first_category_id').change(function(){
-      var drop1listVal = $('#item_first_category_id option:selected').attr("value");
+    $('#first_category').change(function(){
+      var drop1listVal = $('#first_category option:selected').attr("value");
       if (drop1listVal == ""){
         $('.select-wrap[name="drop2"]').hide();
         $('.select-wrap[name="drop3"]').hide();
       } else $('.select-wrap[name="drop2"]').show();
+        $('.form-group[name="size"], .form-suggest-container[name="brand"]').hide();
     });
   });
 
   $(function(){
-    $('#item_second_category_id').change(function(){
-      var drop2listVal = $('#item_second_category_id option:selected').attr("value");
+    $(".form-group").on("change", "#second_category", function(){
+      var drop2listVal = $('#second_category option:selected').attr("value");
       if (drop2listVal == ""){
         $('.select-wrap[name="drop3"]').hide();
+        $('.form-group[name="size"], .form-suggest-container[name="brand"]').hide();
       } else $('.select-wrap[name="drop3"]').show();
+        $('.form-group[name="size"], .form-suggest-container[name="brand"]').hide();
     });
   });
 
   $(function(){
-    $('#item_third_category_id').change(function(){
-      var drop3listVal = $('#item_third_category_id option:selected').attr("value");
+    $('.form-group').on("change", "#third_category", function(){
+      var drop3listVal = $('#third_category option:selected').attr("value");
       if (drop3listVal == ""){
         $('.form-group[name="size"], .form-suggest-container[name="brand"]').hide();
       } else $('.form-group[name="size"], .form-suggest-container[name="brand"]').show();

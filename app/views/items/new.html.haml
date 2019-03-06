@@ -9,7 +9,7 @@
         %div{"data-reactroot" => ""}
           .sell-container-inner
             %h2.l-single-head 商品の情報を入力
-            = form_for @item, :html => {:class => "sell-form"}, url: items_path do |f|
+            = form_with model: @item, :html => {:class => "sell-form"} do |f|
               = f.fields_for :image do |i|
                 .sell-upload-box
                   = i.label '出品画像', class: 'sell-upload-head'
@@ -64,20 +64,20 @@
                     = f.label 'カテゴリー', class: 'form-group-label'
                     %span.form-require 必須
                     %div
-                      .select-wrap{name: "drop1"}
-                        = f.collection_select :first_category_id, FirstCategory.all, :id, :name, prompt: '---', class: 'select-default'
+                      .select-wrap{id: "first_category", name: "drop1"}
+                        = f.select :first_category_id, options_from_collection_for_select(@first_categories, :id, :name), {prompt: '---'}, {data: {remote: true, url: url_for(action: :select_first_category)}}
                         %i.fas.fa-angle-down
-                      .select-wrap{name: "drop2", style: "display: none;"}
-                        = f.collection_select :second_category_id, SecondCategory.all, :id, :name, prompt: '---', class: 'select-default'
+                      .select-wrap{id: "second_category", name: "drop2", style: "display: none;"}
+                        = f.select :second_category_id, options_from_collection_for_select(@second_categories, :id, :name), {prompt: '---'}, {data: {remote: true, url: url_for(action: :select_second_category)}}
                         %i.fas.fa-angle-down
-                      .select-wrap{name: "drop3", style: "display: none;"}
-                        = f.collection_select :third_category_id, ThirdCategory.all, :id, :name, prompt: '---', class: 'select-default'
+                      .select-wrap{id: "third_category", name: "drop3", style: "display: none;"}
+                        = f.select :third_category_id, options_from_collection_for_select(@third_categories, :id, :name), {prompt: '---'}, {data: {remote: true, url: url_for(action: :select_third_category)}}
                         %i.fas.fa-angle-down
                   .form-group{name: "size", style: "display: none;"}
                     = f.label 'サイズ', class: 'form-group-label'
                     %span.form-require 必須
-                    .select-wrap
-                      = f.collection_select :size_id, Size.all, :id, :name, prompt: '---', class: 'select-default'
+                    .select-wrap{id: "size"}
+                      = f.select :size_id, options_from_collection_for_select(@sizes, :id, :name), {prompt: '---'}
                       %i.fas.fa-angle-down
                   .form-group.form-suggest-container{name: "brand", style: "display: none;"}
                     %label.form-group-label
